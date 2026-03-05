@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-light: #ffdeeb;
+            --pink-medium: #ff85a1;
+            --pink-dark: #ff385c;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--pink-light);
+            background-image: radial-gradient(#ffb6c1 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background: var(--white);
+            width: 100%;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--pink-dark);
+            margin: 0;
+        }
+
+        .counter-badge {
+            background: var(--pink-dark);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        /* Tarjeta Sorpresa */
+        .surprise-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            border: 2px dashed var(--pink-medium);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .surprise-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .surprise-box h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--pink-medium);
+            margin-top: 0;
+        }
+
+        #random-reason {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Buscador */
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #search:focus {
+            box-shadow: 0 5px 20px rgba(255, 56, 92, 0.2);
+        }
+
+        /* Grid de razones */
+        #reasons-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .reason-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            border-left: 6px solid var(--pink-medium);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .number {
+            font-weight: bold;
+            color: var(--pink-dark);
+            font-size: 1.2rem;
+            margin-right: 20px;
+            min-width: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--pink-dark);
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>200 Razones para Amarte</h1>
+        <div class="counter-badge">Mil motivos no alcanzarían, pero aquí hay 200 <span class="heart-icon">❤</span></div>
+    </header>
+
+    <div class="main-container">
+        <div class="surprise-box" onclick="generateRandom()">
+            <h2>Razón aleatoria del momento</h2>
+            <div id="random-reason">Haz clic aquí para una sorpresa...</div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Escribe algo que ames de ella... (ej: ojos, risa, apoyo)">
+        </div>
+
+        <div id="reasons-list">
+            </div>
+    </div>
+
+    <footer>
+        Hecho con amor infinito para la mujer más especial <br> 
+        &copy; 2026 - Nuestro espacio mágico
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Función extra para el botón sorpresa
+        function generateRandom() {
+            const display = document.getElementById('random-reason');
+            const randomIndex = Math.floor(Math.random() * reasons.length);
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = reasons[randomIndex];
+                display.style.opacity = 1;
+            }, 200);
+        }
+    </script>
+</body>
+</html>
